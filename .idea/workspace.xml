@@ -12,8 +12,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d64dba8-68c6-476b-901e-cf9a8c242376" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Color.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Color.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ColorGrayscale.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ColorGrayscale.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ColorGrayscaleAlpha.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ColorGrayscaleAlpha.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,12 +65,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1591699478960</updated>
-      <workItem from="1591699483934" duration="450000" />
+      <workItem from="1591699483934" duration="15464000" />
     </task>
+    <task id="LOCAL-00001" summary="Added README">
+      <created>1591700100207</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591700100208</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added README" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added README" />
   </component>
   <component name="WindowStateProjectService">
     <state x="835" y="437" key="Github.ShareDialog" timestamp="1591699495853">
@@ -72,5 +93,25 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="744" y="237" key="Github.UntrackedFilesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1591699512317" />
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1591718622833">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1591718622833" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1591718622833">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1591718622833" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1591718622832">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1591718622832" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1591718622833">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1591718622833" />
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2" timestamp="1591700129048">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1591700129048" />
   </component>
 </project>
