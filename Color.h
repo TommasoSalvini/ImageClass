@@ -5,7 +5,7 @@
 #ifndef IMAGECLASS_COLOR_H
 #define IMAGECLASS_COLOR_H
 
-enum Channel {RED,GREEN,BLUE,ALPHA};
+enum Channel {RED,GREEN,BLUE,ALPHA,ALL};
 
 class Color {
 public:
@@ -18,8 +18,8 @@ public:
     virtual float GetGrayscaleValue()=0;
 
     virtual void SetChannel(float value,Channel channel)=0;
-    virtual void SetColor(float r,float g,float b,float a)=0;
-    virtual void SetColor(float in_value)=0;
+    virtual void SetColor(float r,float g,float b,float a);
+    virtual void SetColor(float in_value);
 };
 
 
