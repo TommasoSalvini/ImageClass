@@ -72,11 +72,22 @@ template <typename ColorType> Image<ColorType> ImageLoader<ColorType>::Load(std:
             image.GetPixel(i).SetColor(grayscale);
         }
         if(id=="P3"){
-            float r,g,b;
-            file>>r>>g>>b;
-            r/=depth;
-            g/=depth;
-            b/=depth;
+            float red,green,blue;
+            file>>red>>green>>blue;
+            red/=depth;
+            green/=depth;
+            blue/=depth;
+            image.GetPixel(i).SetColor(red,green,blue,1);
+        }
+        if(id=="P6"){
+            int red,green,blue;
+            file.read(reinterpret_cast<char*>(&red),4);
+            file.read(reinterpret_cast<char*>(&green),4);
+            file.read(reinterpret_cast<char*>(&blue),4);
+            std::cout << red << green << blue << std::endl;
+            float r = red/depth;
+            float g = green/depth;
+            float b = blue/depth;
             image.GetPixel(i).SetColor(r,g,b,1);
         }
     }
