@@ -15,19 +15,19 @@ ColorRGBA::ColorRGBA(float r, float g, float b, float a) {
     ColorRGBA::a=a;
 }
 
-ColorRGBA ColorRGBA::operator=(Color *original) {
+ColorRGBA ColorRGBA::operator=(Color* original) {
     ColorRGB::operator=(original);
     a=original->GetChannel(ALPHA);
     return *this;
 }
 
-ColorRGBA ColorRGBA::operator+(Color *other) {
+ColorRGBA ColorRGBA::operator+(Color* other) {
     ColorRGB::operator+(other);
     a+=other->GetChannel(ALPHA);
     return *this;
 }
 
-ColorRGBA ColorRGBA::operator*(Color *other) {
+ColorRGBA ColorRGBA::operator*(Color* other) {
     ColorRGB::operator*(other);
     a*=other->GetChannel(ALPHA);
     return *this;

@@ -1,21 +1,22 @@
 #include <iostream>
-#include "ColorGrayscale.h"
-#include "ColorGrayscaleAlpha.h"
-#include "ColorRGB.h"
-#include "ColorRGBA.h"
+#include "Color/ColorGrayscale.h"
+#include "Color/ColorGrayscaleAlpha.h"
+#include "Color/ColorRGB.h"
+#include "Color/ColorRGBA.h"
+#include "Image.h"
 
 int main() {
-    ColorGrayscale color(0.5);
-    ColorGrayscaleAlpha color2(0.2,0.5);
-    ColorRGB red(1,0,0);
-    ColorRGB light_blue(0.3,0.3,1);
-    ColorRGBA transparent_green(0,1,0,1);
 
+    Image<ColorRGB> image1;
+    std::cout << image1.GetWidth() << " " << image1.GetHeight() << std::endl;
 
-    color2 = color2+&color;
-    ColorRGB* multiplied_color;
-    multiplied_color = &(transparent_green*&light_blue);
+    ColorRGB color(0.5,0.2,0.1);
+    image1.SetPixel(color,13,15);
 
-    std::cout << multiplied_color->GetGrayscaleValue() << " " << multiplied_color->GetChannel(ALPHA) << std::endl;
+    image1.GetPixel(13,15)+&(ColorRGBA(1,0.1,0.2,0));
+
+    std::cout << image1.GetPixel(13,15).GetChannel(RED) << std::endl;
+    std::cout << image1.GetPixel(14,15).GetChannel(RED) << std::endl;
+
     return 0;
 }

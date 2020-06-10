@@ -9,6 +9,7 @@ enum Channel {RED,GREEN,BLUE,ALPHA,ALL};
 
 class Color {
 public:
+ //TODO copy constructor
 
 /*    virtual Color operator=(const Color &other)=0;
     virtual Color operator+(const Color &other)=0;
