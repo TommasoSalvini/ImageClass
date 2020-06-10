@@ -14,7 +14,9 @@ public:
     //Image(const Image &original);
 
     ColorType& GetPixel(int x,int y);
+    ColorType& GetPixel(int i);
     void SetPixel(ColorType color,int x,int y);
+    void SetPixel(float r,float g,float b,float a,int x,int y);
     int GetWidth();
     int GetHeight();
 
@@ -40,8 +42,16 @@ template<typename ColorType> ColorType& Image<ColorType>::GetPixel(int x,int y){
     return pixels[(width*y)+x];
 }
 
+template<typename ColorType> ColorType& Image<ColorType>::GetPixel(int i) {
+    return pixels[i];
+}
+
 template<typename ColorType> void Image<ColorType>::SetPixel(ColorType color,int x,int y){
     GetPixel(x,y) = color;
+}
+
+template<typename ColorType> void Image<ColorType>::SetPixel(float r,float g, float b, float a,int x,int y){
+    GetPixel(x,y).SetColor(r,g,b,a);
 }
 
 template<typename ColorType> int Image<typename ColorType>::GetWidth() {

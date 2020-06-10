@@ -29,19 +29,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d64dba8-68c6-476b-901e-cf9a8c242376" name="Default Changelist" comment="">
+    <list default="true" id="4d64dba8-68c6-476b-901e-cf9a8c242376" name="Default Changelist" comment="Implemented template image class, moved color classes to Color folder">
+      <change afterPath="$PROJECT_DIR$/ImageLoader.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ImageLoader.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Color.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Color/Color.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Color.h" beforeDir="false" afterPath="$PROJECT_DIR$/Color/Color.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ColorGrayscale.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorGrayscale.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ColorGrayscale.h" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorGrayscale.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ColorGrayscaleAlpha.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorGrayscaleAlpha.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ColorGrayscaleAlpha.h" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorGrayscaleAlpha.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ColorRGB.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorRGB.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ColorRGB.h" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorRGB.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ColorRGBA.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorRGBA.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ColorRGBA.h" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorRGBA.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Image.h" beforeDir="false" afterPath="$PROJECT_DIR$/Image.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
@@ -68,6 +60,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -92,7 +85,7 @@
       <option name="presentableId" value="Default" />
       <updated>1591699478960</updated>
       <workItem from="1591699483934" duration="18676000" />
-      <workItem from="1591782508067" duration="6298000" />
+      <workItem from="1591782508067" duration="17269000" />
     </task>
     <task id="LOCAL-00001" summary="Added README">
       <created>1591700100207</created>
@@ -115,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591721841149</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implemented template image class, moved color classes to Color folder">
+      <created>1591789362986</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1591789362986</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,7 +136,8 @@
     <MESSAGE value="Added README" />
     <MESSAGE value="Implemented 1 and 2 channels colors" />
     <MESSAGE value="Implemented 3 and 4 channel colors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented 3 and 4 channel colors" />
+    <MESSAGE value="Implemented template image class, moved color classes to Color folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented template image class, moved color classes to Color folder" />
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="233" key="#com.intellij.ide.util.MemberChooser" timestamp="1591784306528">
@@ -151,22 +152,38 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="744" y="237" key="Github.UntrackedFilesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1591699512317" />
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1591789165071">
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1591800169040">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1591789165071" />
-    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1591789165071">
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1591800169040" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1591800169039">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1591789165071" />
-    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1591789165071">
+    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1591800169039" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1591800169039">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1591789165071" />
-    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1591789165071">
+    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1591800169039" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1591800169039">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1591789165071" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1591800169039" />
+    <state width="1877" height="363" key="GridCell.Tab.1.bottom" timestamp="1591797967733">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="363" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1591797967733" />
+    <state width="1877" height="363" key="GridCell.Tab.1.center" timestamp="1591797967733">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="363" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1591797967733" />
+    <state width="1877" height="363" key="GridCell.Tab.1.left" timestamp="1591797967733">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="363" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1591797967733" />
+    <state width="1877" height="363" key="GridCell.Tab.1.right" timestamp="1591797967733">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="363" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1591797967733" />
     <state x="552" y="272" key="Vcs.Push.Dialog.v2" timestamp="1591721856052">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
