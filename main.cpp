@@ -7,14 +7,14 @@
 #include "ImageLoader.h"
 #include "KernelProcessor.h"
 
-Image<ColorRGB> GenerateUVTest(int width,int height){
-    Image<ColorRGB> image(width,height);
+Image<ColorRGBA> GenerateUVTest(int width,int height){
+    Image<ColorRGBA> image(width,height);
 
     for(float x=0;x<image.GetWidth();x++){
         for(float y=0;y<image.GetHeight();y++){
             float r = x/image.GetWidth();
             float g = y/image.GetHeight();
-            ColorRGB color(r,g,0);
+            ColorRGBA color(r,g,0,1);
             image.SetPixel(color,x,y);
         }
     }
@@ -26,10 +26,14 @@ int main() {
 
     ImageLoader<ColorRGBA> loader;
     Image<ColorRGBA> image = loader.Load("snail.ppm");
+    Image<ColorRGBA> uvtest = GenerateUVTest(200,200);
 
     KernelProcessor<ColorRGBA> processor(&image);
     Image<ColorRGBA> final;
 
+    loader.Write(uvtest,"results/uvtest.ppm");
+
+    loader.Write(image,"results/1.ppm");
     final = processor.Process(processor.blur);
     loader.Write(final,"results/2.ppm");
     final = processor.Process(processor.sharpen);
@@ -41,6 +45,5 @@ int main() {
     final = processor.Process(processor.edge);
     loader.Write(final,"results/6.ppm");
 
-    loader.Write(image,"results/1.ppm");
     return 0;
 }
