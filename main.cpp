@@ -7,34 +7,41 @@
 #include "ImageLoader.h"
 #include "KernelProcessor.h"
 
-int main() {
+Image<ColorRGB> GenerateUVTest(int width,int height){
+    Image<ColorRGB> image(width,height);
 
-    Image<ColorRGB> image1(100,100);
-    //std::cout << image1.GetWidth() << " " << image1.GetHeight() << std::endl;
-
-    for(float x=0;x<image1.GetWidth();x++){
-        for(float y=0;y<image1.GetHeight();y++){
-            float r = x/image1.GetWidth();
-            float g = y/image1.GetHeight();
-            //std::cout << x << " " << y << std::endl;
+    for(float x=0;x<image.GetWidth();x++){
+        for(float y=0;y<image.GetHeight();y++){
+            float r = x/image.GetWidth();
+            float g = y/image.GetHeight();
             ColorRGB color(r,g,0);
-            //std::cout << color.GetChannel(RED) << " " << color.GetChannel(GREEN) << " " << color.GetChannel(BLUE) << std::endl;
-            image1.SetPixel(color,x,y);
+            image.SetPixel(color,x,y);
         }
     }
-    ColorRGB color(0.5,0.2,0.1);
-    image1.SetPixel(color,13,15);
+    return image;
+}
 
-    ImageLoader<ColorRGB> loader;
-    Image<ColorRGB> image = loader.Load("snail.ascii.ppm");
+int main() {
+
+
+    ImageLoader<ColorRGBA> loader;
+    Image<ColorRGBA> image = loader.Load("snail.ppm");
     std::cout << image.GetHeight() << " " << image.GetWidth() << std::endl;
 
-    KernelProcessor<ColorRGB> processor(&image);
-    float kernel[] = {0,-1,0,-1,-5,-1,0,-1,0};
-    Image<ColorRGB> final = processor.Process(kernel);
+    KernelProcessor<ColorRGBA> processor(&image);
+    Image<ColorRGBA> final;
 
-    loader.Write(final,"result.ppm");
+    final = processor.Process(processor.blur);
+    loader.Write(final,"results/2.ppm");
+    final = processor.Process(processor.sharpen);
+    loader.Write(final,"results/3.ppm");
+    final = processor.Process(processor.emboss);
+    loader.Write(final,"results/4.ppm");
+    final = processor.Process(processor.outline);
+    loader.Write(final,"results/5.ppm");
+    final = processor.Process(processor.edge);
+    loader.Write(final,"results/6.ppm");
 
-
+    loader.Write(image,"results/1.ppm");
     return 0;
 }

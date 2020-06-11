@@ -12,11 +12,13 @@
 #include "Color/ColorGrayscale.h"
 #include "Color/ColorRGB.h"
 
+
 template <typename ColorType> class ImageLoader {
 public:
     ImageLoader();
     void Write(Image<ColorType> image, std::string path="");
     Image<ColorType> Load(std::string path="");
+    int Clamp(int value,int min,int max);
 
 protected:
 };
@@ -24,6 +26,14 @@ protected:
 
 template <typename ColorType> ImageLoader<ColorType>::ImageLoader(){
 
+}
+
+template <typename ColorType> int ImageLoader<ColorType>::Clamp(int value,int min,int max){
+    if(value>max){
+        return max;
+    }else if(value < min){
+        return min;
+    } else {return value;}
 }
 
 
@@ -41,9 +51,9 @@ template <typename ColorType> void ImageLoader<ColorType>::Write(Image<ColorType
     file << id << " " << image.GetWidth() << " " << image.GetHeight() << " 255" << std::endl;
     for(int i=0;i<image.GetHeight()*image.GetHeight();i++){
         if(extension=="pgm") {
-            file << (int)((image.GetPixel(i).GetGrayscaleValue())*255) << " ";
+            file << Clamp((int)((image.GetPixel(i).GetGrayscaleValue())*255),0,255) << " ";
         } else {
-            file << (int)((image.GetPixel(i).GetChannel(RED))*255) << " " << (int)((image.GetPixel(i).GetChannel(GREEN))*255) << " " << (int)((image.GetPixel(i).GetChannel(BLUE))*255) << " ";
+            file << Clamp((int)((image.GetPixel(i).GetChannel(RED))*255),0,255) << " " << Clamp((int)((image.GetPixel(i).GetChannel(GREEN))*255),0,255) << " " << Clamp((int)((image.GetPixel(i).GetChannel(BLUE))*255),0,255) << " ";
         }
         if(i>0 && i%image.GetWidth()==0){
             file << std::endl;
@@ -84,10 +94,11 @@ template <typename ColorType> Image<ColorType> ImageLoader<ColorType>::Load(std:
             file.read(reinterpret_cast<char*>(&red),4);
             file.read(reinterpret_cast<char*>(&green),4);
             file.read(reinterpret_cast<char*>(&blue),4);
-            std::cout << red << green << blue << std::endl;
+            //std::cout << red << green << blue << std::endl;
             float r = red/depth;
             float g = green/depth;
             float b = blue/depth;
+            std::cout<<r<<" "<<g<<" "<<b<<std::endl;
             image.GetPixel(i).SetColor(r,g,b,1);
         }
     }

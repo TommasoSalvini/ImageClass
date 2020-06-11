@@ -13,9 +13,8 @@ public:
     ColorGrayscaleAlpha();
     ColorGrayscaleAlpha(float value,float alpha);
 
-    ColorGrayscaleAlpha operator=(Color* original);
-    ColorGrayscaleAlpha operator+(Color* other);
-    ColorGrayscaleAlpha operator*(Color* other);
+    ColorGrayscaleAlpha operator+(Color& other);
+    ColorGrayscaleAlpha operator*(float value);
 
     float GetChannel(Channel channel);
 

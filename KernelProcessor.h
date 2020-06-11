@@ -15,6 +15,13 @@ public:
     void SetImage(Image<ColorType>* image);
     Image<ColorType> Process(float kernel[9]);
 
+    float identity[9] = {0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0};
+    float blur[9] = {0.0625,0.125,0.0625,0.125,0.25,0.125,0.0625,0.125,0.0625};
+    float outline[9] = {-1.0,-1.0,-1.0,-1.0,8.0,-1.0,-1.0,-1.0,-1.0};
+    float sharpen[9] = {0.0,-1.0,0.0,-1.0,5.0,-1.0,0.0,-1.0,0.0};
+    float emboss[9] = {-2.0,-1.0,0.0,-1.0,1.0,1.0,0.0,1.0,2.0};
+    float edge[9]  = {0.0,0.0,0.0,-1.0,1.0,0.0,0.0,0.0};
+
 protected:
     Image<ColorType>* image;
 };
@@ -23,44 +30,36 @@ protected:
 template<typename ColorType> KernelProcessor<ColorType>::KernelProcessor(){
     image = new Image<ColorType>;
 }
-template<typename ColorType> void KernelProcessor<ColorType>::SetImage(Image<ColorType> *image){
+template<typename ColorType> void KernelProcessor<ColorType>::SetImage(Image<ColorType>* image){
     KernelProcessor<ColorType>::image=image;
 }
 template<typename ColorType> KernelProcessor<ColorType>::KernelProcessor(Image<ColorType>* image){
     SetImage(image);
 }
 template<typename ColorType> Image<ColorType> KernelProcessor<ColorType>::Process(float kernel[9]){
-    Image<ColorType> final_image(image->GetWidth(),image->GetHeight());
+    int width=image->GetWidth();
+    int height=image->GetHeight();
+    Image<ColorType> final_image(width,height);
     ColorType final;
     ColorType current_color;
-    ColorType* center;
-    for(int x=0;x<image->GetWidth();x++){
-        for(int y=0;y<image->GetHeight();y++){
-            final.SetColor(0);
-            center = &(image->GetPixel(x,y));
+    for(int y=0;y<width;y++){
+        for(int x=0;x<height;x++){
+            final.SetColor(0.0);
             int kernel_index=0;
-            //final.SetColor(0);
             for(int j=-1;j<=1;j++){
                 for(int i=-1;i<=1;i++){
-                    if(x+i<0 || x+i>=image->GetWidth() || y+j<0 || y+j>=image->GetWidth()){
-                        current_color=*center;
-                        //SetColor(1);
+                    if(x+i<0 || x+i>=width || y+j<0 || y+j>=height){
+                        current_color=(image->GetPixel(x,y));
                     } else { current_color=(image->GetPixel(x+i,y+j));}
-                    //std::cout << current_color.GetChannel(RED) << current_color.GetChannel(GREEN) << current_color.GetChannel(BLUE);
-                    ColorGrayscale kernel_color(kernel[kernel_index]);
-                    //std::cout << kernel_color.GetGrayscaleValue();
-                    final=&(final+&(current_color*&kernel_color));
+                    final=final+(current_color*kernel[kernel_index]);
                     kernel_index++;
-                    //std::cout<<final.GetChannel(RED)<<final.GetChannel(GREEN)<<final.GetChannel(BLUE)<<std::endl;
 
                 }
             }
-            final_image.GetPixel(x,y) = &final;
-            //std::cout<<std::endl;
+            final_image.SetPixel(final,x,y);
         }
     }
     return final_image;
 }
-
 
 #endif //IMAGECLASS_KERNELPROCESSOR_H

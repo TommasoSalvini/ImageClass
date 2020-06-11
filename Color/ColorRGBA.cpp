@@ -15,23 +15,6 @@ ColorRGBA::ColorRGBA(float r, float g, float b, float a) {
     ColorRGBA::a=a;
 }
 
-ColorRGBA ColorRGBA::operator=(Color* original) {
-    ColorRGB::operator=(original);
-    a=original->GetChannel(ALPHA);
-    return *this;
-}
-
-ColorRGBA ColorRGBA::operator+(Color* other) {
-    ColorRGB::operator+(other);
-    a+=other->GetChannel(ALPHA);
-    return *this;
-}
-
-ColorRGBA ColorRGBA::operator*(Color* other) {
-    ColorRGB::operator*(other);
-    a*=other->GetChannel(ALPHA);
-    return *this;
-}
 
 float ColorRGBA::GetChannel(Channel channel) {
     if(channel!=ALPHA){
@@ -46,4 +29,13 @@ void ColorRGBA::SetChannel(float value, Channel channel) {
     } else {
         a=value;
     }
+}
+
+ColorRGBA ColorRGBA::operator+(Color &other) {
+    ColorRGB result = ColorRGB::operator+(other);
+    return ColorRGBA(result.GetChannel(RED),result.GetChannel(GREEN),result.GetChannel(BLUE),GetChannel(ALPHA)+other.GetChannel(ALPHA));
+}
+
+ColorRGBA ColorRGBA::operator*(float value) {
+    return ColorRGBA(GetChannel(RED)*value,GetChannel(GREEN)*value,GetChannel(BLUE)*value,GetChannel(ALPHA)*value);
 }

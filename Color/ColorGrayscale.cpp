@@ -8,24 +8,10 @@ ColorGrayscale::ColorGrayscale() {
     value=0;
 }
 
-ColorGrayscale::ColorGrayscale(float in_value) {
-    value=in_value;
+ColorGrayscale::ColorGrayscale(float value) {
+    ColorGrayscale::value=value;
 }
 
-ColorGrayscale ColorGrayscale::operator=(Color* original) {
-    value =  original->GetGrayscaleValue();
-    return *this;
-}
-
-ColorGrayscale ColorGrayscale::operator+(Color* other){
-    value+=other->GetGrayscaleValue();
-    return *this;
-}
-
-ColorGrayscale ColorGrayscale::operator*(Color* other) {
-    value*=other->GetGrayscaleValue();
-    return *this;
-}
 
 float ColorGrayscale::GetChannel(Channel channel) {
     if(channel!=ALPHA){
@@ -40,13 +26,24 @@ float ColorGrayscale::GetGrayscaleValue() {
 }
 
 void ColorGrayscale::SetChannel(float value, Channel channel) {
-    ColorGrayscale::value=value;
+    if(channel==GRAYSCALE){
+        ColorGrayscale::value=value;
+    }
 }
 
-void ColorGrayscale::SetColor(float in_value) {
-    value=in_value;
+void ColorGrayscale::SetColor(float value) {
+    ColorGrayscale::value=value;
 }
 
 void ColorGrayscale::SetColor(float r, float g, float b, float a) {
     value=(r+g+b)/3;
+}
+
+
+ColorGrayscale ColorGrayscale::operator+(Color &other) {
+    return ColorGrayscale(GetGrayscaleValue()+other.GetGrayscaleValue());
+}
+
+ColorGrayscale ColorGrayscale::operator*(float value) {
+    return ColorGrayscale(GetGrayscaleValue()*value);
 }

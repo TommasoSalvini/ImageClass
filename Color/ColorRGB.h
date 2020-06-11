@@ -13,9 +13,8 @@ public:
     ColorRGB();
     ColorRGB(float r,float g,float b);
 
-    ColorRGB operator=(Color* original);
-    ColorRGB operator+(Color* other);
-    ColorRGB operator*(Color* other);
+    ColorRGB operator+(Color& other);
+    ColorRGB operator*(float value);
 
     float GetChannel(Channel channel) override;
     float GetGrayscaleValue() override;

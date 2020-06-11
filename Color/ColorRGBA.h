@@ -13,9 +13,8 @@ public:
     ColorRGBA();
     ColorRGBA(float r,float g,float b,float a);
 
-    ColorRGBA operator=(Color* original);
-    ColorRGBA operator+(Color* other);
-    ColorRGBA operator*(Color* other);
+    ColorRGBA operator+(Color& other);
+    ColorRGBA operator*(float value);
 
     float GetChannel(Channel channel);
 

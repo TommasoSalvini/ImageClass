@@ -14,33 +14,13 @@ ColorRGB::ColorRGB(float r, float g, float b) {
     ColorRGB::b=b;
 }
 
-ColorRGB ColorRGB::operator=(Color *original) {
-    r=original->GetChannel(RED);
-    g=original->GetChannel(GREEN);
-    b=original->GetChannel(BLUE);
-    return *this;
-}
-
-ColorRGB ColorRGB::operator+(Color *other) {
-    r+=other->GetChannel(RED);
-    g+=other->GetChannel(GREEN);
-    b+=other->GetChannel(BLUE);
-    return *this;
-}
-
-ColorRGB ColorRGB::operator*(Color *other) {
-    r*=other->GetChannel(RED);
-    g*=other->GetChannel(GREEN);
-    b*=other->GetChannel(BLUE);
-    return *this;
-}
-
 float ColorRGB::GetChannel(Channel channel) {
     switch(channel){
         case RED : return r;
         case GREEN : return g;
         case BLUE : return b;
         case ALPHA : return 1;
+        case GRAYSCALE : return GetGrayscaleValue();
     }
 }
 
@@ -54,5 +34,14 @@ void ColorRGB::SetChannel(float value, Channel channel) {
         case GREEN : g=value; break;
         case BLUE : b=value; break;
         case ALL : r=value; g=value; b=value; break;
+        case GRAYSCALE : r=value; g=value; b=value; break;
     }
+}
+
+ColorRGB ColorRGB::operator+(Color &other) {
+    return ColorRGB(GetChannel(RED)+other.GetChannel(RED),GetChannel(GREEN)+other.GetChannel(GREEN),GetChannel(BLUE)+other.GetChannel(BLUE));
+}
+
+ColorRGB ColorRGB::operator*(float value) {
+    return ColorRGB(GetChannel(RED)*value,GetChannel(GREEN)*value,GetChannel(BLUE)*value);
 }

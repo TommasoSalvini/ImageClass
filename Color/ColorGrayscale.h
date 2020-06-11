@@ -11,20 +11,18 @@
 class ColorGrayscale : public Color {
 public:
     ColorGrayscale();
-    ColorGrayscale(float in_value);
+    ColorGrayscale(float value);
 
-    ColorGrayscale operator=(Color* original);
 
-    ColorGrayscale operator+(Color* other);
-
-    ColorGrayscale operator*(Color* other);
+    ColorGrayscale operator+(Color& other);
+    ColorGrayscale operator*(float value);
 
     float GetChannel(Channel channel);
     float GetGrayscaleValue();
 
     void SetChannel(float value,Channel channel);
     void SetColor(float r,float g,float b,float a);
-    void SetColor(float in_value);
+    void SetColor(float value);
 
 
 protected:
