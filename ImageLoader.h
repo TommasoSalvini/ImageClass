@@ -45,9 +45,9 @@ template <typename ColorType> void ImageLoader<ColorType>::Write(Image<ColorType
     std::string id;
     if(extension=="pgm"){
         id="P2";
-    } else {
+    } else if(extension=="ppm"){
         id="P3";
-    }
+    } else {throw "Invalid extension";}
     file << id << " " << image.GetWidth() << " " << image.GetHeight() << " 255" << std::endl;
     for(int i=0;i<image.GetHeight()*image.GetHeight();i++){
         if(extension=="pgm") {
@@ -81,25 +81,15 @@ template <typename ColorType> Image<ColorType> ImageLoader<ColorType>::Load(std:
             grayscale/=depth;
             image.GetPixel(i).SetColor(grayscale);
         }
-        if(id=="P3"){
+        else if(id=="P3"){
             float red,green,blue;
             file>>red>>green>>blue;
             red/=depth;
             green/=depth;
             blue/=depth;
             image.GetPixel(i).SetColor(red,green,blue,1);
-        }
-        if(id=="P6"){
-            int red,green,blue;
-            file.read(reinterpret_cast<char*>(&red),4);
-            file.read(reinterpret_cast<char*>(&green),4);
-            file.read(reinterpret_cast<char*>(&blue),4);
-            //std::cout << red << green << blue << std::endl;
-            float r = red/depth;
-            float g = green/depth;
-            float b = blue/depth;
-            std::cout<<r<<" "<<g<<" "<<b<<std::endl;
-            image.GetPixel(i).SetColor(r,g,b,1);
+        } else {
+            throw "Invalid file format";
         }
     }
 

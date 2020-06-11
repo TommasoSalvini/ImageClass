@@ -11,12 +11,6 @@ enum Channel {RED,GREEN,BLUE,ALPHA,GRAYSCALE,ALL};
 
 class Color {
 public:
- //TODO copy constructor
-
-/*    virtual Color& operator=(const Color &other);
-    virtual Color operator+(const Color &other);
-    virtual Color operator*(float value);*/
-
     virtual float GetChannel(Channel channel)=0;
     virtual float GetGrayscaleValue()=0;
 
@@ -25,9 +19,6 @@ public:
     virtual void SetColor(float in_value);
 
 
-
-protected:
-    //std::vector<Channel> channels;
 };
 
 
