@@ -26,7 +26,6 @@ int main() {
 
     ImageLoader<ColorRGBA> loader;
     Image<ColorRGBA> image = loader.Load("snail.ppm");
-    std::cout << image.GetHeight() << " " << image.GetWidth() << std::endl;
 
     KernelProcessor<ColorRGBA> processor(&image);
     Image<ColorRGBA> final;
