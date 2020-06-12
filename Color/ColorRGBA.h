@@ -12,6 +12,7 @@ class ColorRGBA : public ColorRGB{
 public:
     ColorRGBA();
     ColorRGBA(float r,float g,float b,float a);
+    ColorRGBA(ColorRGBA& other);
 
     ColorRGBA operator+(Color& other);
     ColorRGBA operator*(float value);

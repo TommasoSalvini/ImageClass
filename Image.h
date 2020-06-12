@@ -28,10 +28,6 @@ protected:
 };
 
 
-/*template<typename ColorType> Image<ColorType>::Image(){
-    Image<ColorType>::Image(100,100);
-}*/
-
 template<typename ColorType> Image<ColorType>::Image(int width,int height){
     Image<ColorType>::width=width;
     Image<ColorType>::height=height;

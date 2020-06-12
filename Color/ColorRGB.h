@@ -12,6 +12,7 @@ class ColorRGB : public Color {
 public:
     ColorRGB();
     ColorRGB(float r,float g,float b);
+    ColorRGB(ColorRGB& other);
 
     ColorRGB operator+(Color& other);
     ColorRGB operator*(float value);

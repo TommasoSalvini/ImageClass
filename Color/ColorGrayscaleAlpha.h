@@ -12,6 +12,7 @@ class ColorGrayscaleAlpha : public ColorGrayscale {
 public:
     ColorGrayscaleAlpha();
     ColorGrayscaleAlpha(float value,float alpha);
+    ColorGrayscaleAlpha(ColorGrayscaleAlpha& other);
 
     ColorGrayscaleAlpha operator+(Color& other);
     ColorGrayscaleAlpha operator*(float value);

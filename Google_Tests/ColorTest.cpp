@@ -24,3 +24,12 @@ TEST(test_color, test_multiplication) {
 
 }
 
+TEST(test_color, test_copy_constructor){
+    ColorGrayscaleAlpha color1(0.8,1.0);
+    ColorRGBA color2(0.3,0.5,0.7,0.9);
+    ColorGrayscaleAlpha color3(color1);
+    ColorRGBA color4(color2);
+    EXPECT_FLOAT_EQ(0.8,color3.GetGrayscaleValue());
+    EXPECT_FLOAT_EQ(0.5,color4.GetChannel(GREEN));
+}
+

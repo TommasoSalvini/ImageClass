@@ -12,6 +12,9 @@ ColorGrayscale::ColorGrayscale(float value) {
     ColorGrayscale::value=value;
 }
 
+ColorGrayscale::ColorGrayscale(ColorGrayscale &other) {
+    value=other.GetGrayscaleValue();
+}
 
 float ColorGrayscale::GetChannel(Channel channel) {
     if(channel!=ALPHA){

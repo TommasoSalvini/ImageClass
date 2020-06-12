@@ -77,7 +77,6 @@ template <typename ColorType> Image<ColorType> ImageLoader<ColorType>::Load(std:
         if(id=="P2"){
             float grayscale;
             file>>grayscale;
-            //float grayscale=std::stof(current_buffer);
             grayscale/=depth;
             image.GetPixel(i).SetColor(grayscale);
         }

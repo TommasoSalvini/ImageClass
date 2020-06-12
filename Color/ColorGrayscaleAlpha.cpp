@@ -13,6 +13,10 @@ ColorGrayscaleAlpha::ColorGrayscaleAlpha(float value, float alpha) {
     ColorGrayscaleAlpha::alpha=alpha;
 }
 
+ColorGrayscaleAlpha::ColorGrayscaleAlpha(ColorGrayscaleAlpha &other)  : ColorGrayscale(other) {
+    //value=other.GetGrayscaleValue();
+    SetChannel(other.GetChannel(ALPHA),ALPHA);
+}
 
 float ColorGrayscaleAlpha::GetChannel(Channel channel) {
     if(channel!=ALPHA){

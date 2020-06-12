@@ -15,6 +15,10 @@ ColorRGBA::ColorRGBA(float r, float g, float b, float a) {
     ColorRGBA::a=a;
 }
 
+ColorRGBA::ColorRGBA(ColorRGBA &other)  : ColorRGB(other) {
+    a=other.GetChannel(ALPHA);
+}
+
 
 float ColorRGBA::GetChannel(Channel channel) {
     if(channel!=ALPHA){

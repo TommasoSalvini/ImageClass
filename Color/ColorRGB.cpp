@@ -14,6 +14,12 @@ ColorRGB::ColorRGB(float r, float g, float b) {
     ColorRGB::b=b;
 }
 
+ColorRGB::ColorRGB(ColorRGB &other) {
+    r=other.GetChannel(RED);
+    g=other.GetChannel(GREEN);
+    b=other.GetChannel(BLUE);
+}
+
 float ColorRGB::GetChannel(Channel channel) {
     switch(channel){
         case RED : return r;
