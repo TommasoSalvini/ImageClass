@@ -40,13 +40,13 @@ template <typename ColorType> void Write<ColorType>(Image<ColorType> image,std::
         id="P2";
     } else if(extension=="ppm"){
         id="P3";
-    } else {throw "Invalid extension";}
+    }
     file << id << " " << image.GetWidth() << " " << image.GetHeight() << " "<< depth << std::endl;
     for(int y=0;y<image.GetHeight();y++){
         for(int x=0;x<image.GetWidth();x++){
             if(extension=="pgm") {
                 file << Clamp((int)((image.GetPixel(x,y).GetGrayscaleValue())*depth),0,depth) << " ";
-            } else {
+            } else if(extension=="ppm") {
                 file << Clamp((int)((image.GetPixel(x,y).GetChannel(RED))*depth),0,depth) << " " << Clamp((int)((image.GetPixel(x,y).GetChannel(GREEN))*depth),0,depth) << " " << Clamp((int)((image.GetPixel(x,y).GetChannel(BLUE))*depth),0,depth) << " ";
             }
         }
@@ -80,8 +80,6 @@ template <typename ColorType> Image<ColorType> Load<ColorType>(std::string path)
                 green/=depth;
                 blue/=depth;
                 image.GetPixel(x,y).SetColor(red,green,blue,1);
-            } else {
-                throw "Invalid file format";
             }
         }
 

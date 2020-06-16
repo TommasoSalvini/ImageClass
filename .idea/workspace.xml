@@ -35,15 +35,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d64dba8-68c6-476b-901e-cf9a8c242376" name="Default Changelist" comment="Added copy constructors for Color classes, refactored Process method on KernelProcessor, added unit testing for KernelProcessor, further cleanup">
+    <list default="true" id="4d64dba8-68c6-476b-901e-cf9a8c242376" name="Default Changelist" comment="Further refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Google_Tests/ImageLoadTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Google_Tests/ImageLoadTest.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Google_Tests/ImageTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Google_Tests/ImageTest.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Google_Tests/KernelProcessorTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Google_Tests/KernelProcessorTest.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Image.h" beforeDir="false" afterPath="$PROJECT_DIR$/Image.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ImageLoader.h" beforeDir="false" afterPath="$PROJECT_DIR$/ImageLoader.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KernelProcessor.h" beforeDir="false" afterPath="$PROJECT_DIR$/KernelProcessor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +196,7 @@
       <workItem from="1591970558514" duration="83000" />
       <workItem from="1592178935129" duration="31000" />
       <workItem from="1592218724535" duration="2697000" />
-      <workItem from="1592297644925" duration="6608000" />
+      <workItem from="1592297644925" duration="9774000" />
     </task>
     <task id="LOCAL-00001" summary="Added README">
       <created>1591700100207</created>
@@ -278,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591964369060</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Further refactoring">
+      <created>1592320645115</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1592320645115</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +338,8 @@
     <MESSAGE value="Implemented Unit Testing for Color, Image and ImageLoader" />
     <MESSAGE value="Added two test images" />
     <MESSAGE value="Added copy constructors for Color classes, refactored Process method on KernelProcessor, added unit testing for KernelProcessor, further cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added copy constructors for Color classes, refactored Process method on KernelProcessor, added unit testing for KernelProcessor, further cleanup" />
+    <MESSAGE value="Further refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Further refactoring" />
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="233" key="#com.intellij.ide.util.MemberChooser" timestamp="1591872523158">
@@ -349,22 +354,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="744" y="237" key="Github.UntrackedFilesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1591699512317" />
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1592320619886">
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1592335699489">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1592320619886" />
-    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1592320619885">
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1592335699489" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1592335699489">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1592320619885" />
-    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1592320619885">
+    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1592335699489" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1592335699489">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1592320619885" />
-    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1592320619885">
+    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1592335699489" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1592335699489">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1592320619885" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1592335699489" />
     <state width="1877" height="363" key="GridCell.Tab.1.bottom" timestamp="1591894967776">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

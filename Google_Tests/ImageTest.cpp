@@ -12,4 +12,5 @@ TEST(image_test, image_set) {
     image.SetPixel(ColorRGBA(1,2,3,4),50,50);
     EXPECT_EQ(2,(image.GetPixel(50,50)).GetChannel(GREEN));
     EXPECT_EQ(100,image.GetWidth());
+    EXPECT_EQ(4,image.GetPixel(-150,50).GetChannel(ALPHA));
 }

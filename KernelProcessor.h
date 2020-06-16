@@ -46,9 +46,7 @@ template<typename ColorType> ColorType KernelProcessor<ColorType>::CalculateKern
     int kernel_index=0;
     for(int j=-1;j<=1;j++){
         for(int i=-1;i<=1;i++){
-            if(x+i<0 || x+i>=image.GetWidth() || y+j<0 || y+j>=image.GetHeight()){
-                current_color=(image.GetPixel(x,y));
-            } else { current_color=(image.GetPixel(x+i,y+j));}
+            current_color=(image.GetPixel(x+i,y+j));
             final=final+(current_color*kernel[kernel_index]);
             kernel_index++;
 

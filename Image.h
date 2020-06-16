@@ -7,6 +7,7 @@
 
 #include <vector>
 
+
 template <typename ColorType> class Image {
 public:
     Image() : Image(100,100) {};
@@ -25,7 +26,6 @@ protected:
     std::vector<ColorType> pixels;
 };
 
-
 template<typename ColorType> Image<ColorType>::Image(int width,int height){
     Image<ColorType>::width=width;
     Image<ColorType>::height=height;
@@ -33,7 +33,8 @@ template<typename ColorType> Image<ColorType>::Image(int width,int height){
 }
 
 template<typename ColorType> ColorType& Image<ColorType>::GetPixel(int x,int y){
-    return pixels[(width*y)+x];
+    //std::cout << x%width << " " << y%height << std::endl;
+    return pixels[(width * ((y%height+height)%height)) + (x%width+width)%width ];
 }
 
 template<typename ColorType> void Image<ColorType>::SetPixel(ColorType color,int x,int y){
