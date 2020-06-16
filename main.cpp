@@ -24,26 +24,30 @@ Image<ColorRGBA> GenerateUVTest(int width,int height){
 int main() {
 
 
-    ImageLoader<ColorRGBA> loader;
-    Image<ColorRGBA> image = loader.Load("snail.ppm");
+    Image<ColorRGBA> image = Load<ColorRGBA>("snail.ppm");
     Image<ColorRGBA> uvtest = GenerateUVTest(200,200);
 
-    KernelProcessor<ColorRGBA> processor(&image);
+    KernelProcessor<ColorRGBA> processor;
     Image<ColorRGBA> final;
 
-    loader.Write(uvtest,"results/uvtest.ppm");
+    Write<ColorRGBA>(uvtest,"results/uvtest.ppm");
 
-    loader.Write(image,"results/1.ppm");
-    final = processor.Process(processor.blur);
-    loader.Write(final,"results/2.ppm");
-    final = processor.Process(processor.sharpen);
-    loader.Write(final,"results/3.ppm");
-    final = processor.Process(processor.emboss);
-    loader.Write(final,"results/4.ppm");
-    final = processor.Process(processor.outline);
-    loader.Write(final,"results/5.ppm");
-    final = processor.Process(processor.edge);
-    loader.Write(final,"results/6.ppm");
+    Write<ColorRGBA>(image,"results/original.ppm");
+    processor.SetKernel(processor.blur);
+    final = processor.Process(image);
+    Write<ColorRGBA>(final,"results/blur.ppm");
+    processor.SetKernel(processor.sharpen);
+    final = processor.Process(image);
+    Write<ColorRGBA>(final,"results/sharpen.ppm");
+    processor.SetKernel(processor.emboss);
+    final = processor.Process(image);
+    Write<ColorRGBA>(final,"results/emboss.ppm");
+    processor.SetKernel(processor.outline);
+    final = processor.Process(image);
+    Write<ColorRGBA>(final,"results/outline.ppm");
+    processor.SetKernel(processor.edge);
+    final = processor.Process(image);
+    Write<ColorRGBA>(final,"results/edge.ppm");
 
     return 0;
 }

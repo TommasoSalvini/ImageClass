@@ -20,13 +20,13 @@
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="ImageClass" targetName="ImageClass" />
-      <config projectName="ImageClass" targetName="gtest" />
-      <config projectName="ImageClass" targetName="Google_Tests_run" />
-      <config projectName="ImageClass" targetName="gmock_main" />
       <config projectName="ImageClass" targetName="core" />
-      <config projectName="ImageClass" targetName="gtest_main" />
       <config projectName="ImageClass" targetName="gmock" />
+      <config projectName="ImageClass" targetName="gmock_main" />
+      <config projectName="ImageClass" targetName="ImageClass" />
+      <config projectName="ImageClass" targetName="Google_Tests_run" />
+      <config projectName="ImageClass" targetName="gtest_main" />
+      <config projectName="ImageClass" targetName="gtest" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -35,20 +35,15 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d64dba8-68c6-476b-901e-cf9a8c242376" name="Default Changelist" comment="Added two test images">
-      <change afterPath="$PROJECT_DIR$/Google_Tests/KernelProcessorTest.cpp" afterDir="false" />
+    <list default="true" id="4d64dba8-68c6-476b-901e-cf9a8c242376" name="Default Changelist" comment="Added copy constructors for Color classes, refactored Process method on KernelProcessor, added unit testing for KernelProcessor, further cleanup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Color/ColorGrayscale.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorGrayscale.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Color/ColorGrayscale.h" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorGrayscale.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Color/ColorGrayscaleAlpha.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorGrayscaleAlpha.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Color/ColorGrayscaleAlpha.h" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorGrayscaleAlpha.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Color/ColorRGB.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorRGB.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Color/ColorRGB.h" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorRGB.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Color/ColorRGBA.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorRGBA.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Color/ColorRGBA.h" beforeDir="false" afterPath="$PROJECT_DIR$/Color/ColorRGBA.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Google_Tests/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Google_Tests/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Google_Tests/ColorTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Google_Tests/ColorTest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Google_Tests/ImageLoadTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Google_Tests/ImageLoadTest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Google_Tests/ImageTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Google_Tests/ImageTest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Google_Tests/KernelProcessorTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Google_Tests/KernelProcessorTest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image.h" beforeDir="false" afterPath="$PROJECT_DIR$/Image.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageLoader.h" beforeDir="false" afterPath="$PROJECT_DIR$/ImageLoader.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KernelProcessor.h" beforeDir="false" afterPath="$PROJECT_DIR$/KernelProcessor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +77,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.advertisement.text.has.clang-format" value="true" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/cmake-build-debug/Google_Tests" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -161,26 +157,26 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.core" />
-      <item itemvalue="CMake Application.ImageClass" />
       <item itemvalue="CMake Application.Google_Tests_run" />
+      <item itemvalue="CMake Application.ImageClass" />
+      <item itemvalue="CMake Application.core" />
       <item itemvalue="CMake Application.gmock" />
       <item itemvalue="CMake Application.gmock_main" />
       <item itemvalue="CMake Application.gtest" />
       <item itemvalue="CMake Application.gtest_main" />
-      <item itemvalue="Google Test.test_color.test_multiplication" />
       <item itemvalue="Google Test.image_test.image_set" />
       <item itemvalue="Google Test.imageloader_test.test_save_and_load" />
-      <item itemvalue="Google Test.test_color.test_copy_constructor" />
       <item itemvalue="Google Test.kernel_test.test_calculation" />
+      <item itemvalue="Google Test.test_color.test_copy_constructor" />
+      <item itemvalue="Google Test.test_color.test_multiplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Google Test.image_test.image_set" />
         <item itemvalue="Google Test.kernel_test.test_calculation" />
         <item itemvalue="Google Test.test_color.test_copy_constructor" />
         <item itemvalue="Google Test.imageloader_test.test_save_and_load" />
         <item itemvalue="Google Test.test_color.test_multiplication" />
-        <item itemvalue="Google Test.image_test.image_set" />
       </list>
     </recent_temporary>
   </component>
@@ -198,7 +194,12 @@
       <workItem from="1591782508067" duration="23235000" />
       <workItem from="1591866103855" duration="20105000" />
       <workItem from="1591894984915" duration="5348000" />
-      <workItem from="1591962304746" duration="1791000" />
+      <workItem from="1591962304746" duration="2165000" />
+      <workItem from="1591969076726" duration="1386000" />
+      <workItem from="1591970558514" duration="83000" />
+      <workItem from="1592178935129" duration="31000" />
+      <workItem from="1592218724535" duration="2697000" />
+      <workItem from="1592297644925" duration="6608000" />
     </task>
     <task id="LOCAL-00001" summary="Added README">
       <created>1591700100207</created>
@@ -270,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591899336582</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added copy constructors for Color classes, refactored Process method on KernelProcessor, added unit testing for KernelProcessor, further cleanup">
+      <created>1591964369060</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1591964369060</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,7 +333,8 @@
     <MESSAGE value="Setup Google Test Framework for Unit Testing" />
     <MESSAGE value="Implemented Unit Testing for Color, Image and ImageLoader" />
     <MESSAGE value="Added two test images" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added two test images" />
+    <MESSAGE value="Added copy constructors for Color classes, refactored Process method on KernelProcessor, added unit testing for KernelProcessor, further cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added copy constructors for Color classes, refactored Process method on KernelProcessor, added unit testing for KernelProcessor, further cleanup" />
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="233" key="#com.intellij.ide.util.MemberChooser" timestamp="1591872523158">
@@ -340,22 +349,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="744" y="237" key="Github.UntrackedFilesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1591699512317" />
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1591964087215">
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1592320619886">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1591964087215" />
-    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1591964087215">
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1592320619886" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1592320619885">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1591964087215" />
-    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1591964087215">
+    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1592320619885" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1592320619885">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1591964087215" />
-    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1591964087215">
+    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1592320619885" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1592320619885">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1591964087215" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1592320619885" />
     <state width="1877" height="363" key="GridCell.Tab.1.bottom" timestamp="1591894967776">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -372,10 +381,14 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="363" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1591894967776" />
-    <state x="552" y="272" key="Vcs.Push.Dialog.v2" timestamp="1591899343091">
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2" timestamp="1591964398184">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="552" y="272" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1591899343091" />
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1591964398184" />
+    <state x="616" y="250" key="run.anything.popup" timestamp="1592301042400">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="616" y="250" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1592301042400" />
     <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1591880464526">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

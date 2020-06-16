@@ -13,22 +13,15 @@
 #include "Color/ColorRGB.h"
 
 
-template <typename ColorType> class ImageLoader {
-public:
-    ImageLoader();
-    void Write(Image<ColorType> image, std::string path="");
-    Image<ColorType> Load(std::string path="");
-    int Clamp(int value,int min,int max);
 
-protected:
-};
+template <typename ColorType> void Write(Image<ColorType> image, std::string path="", int depth=255);
+template <typename ColorType> Image<ColorType> Load(std::string path="");
+int Clamp(int value,int min,int max);
 
 
-template <typename ColorType> ImageLoader<ColorType>::ImageLoader(){
 
-}
 
-template <typename ColorType> int ImageLoader<ColorType>::Clamp(int value,int min,int max){
+int Clamp(int value,int min,int max){
     if(value>max){
         return max;
     }else if(value < min){
@@ -37,7 +30,7 @@ template <typename ColorType> int ImageLoader<ColorType>::Clamp(int value,int mi
 }
 
 
-template <typename ColorType> void ImageLoader<ColorType>::Write(Image<ColorType> image,std::string path="") {
+template <typename ColorType> void Write<ColorType>(Image<ColorType> image,std::string path, int depth) {
     auto extension_pos = path.find_last_of(".");
     auto extension=path.substr(extension_pos+1);
     std::ofstream file;
@@ -48,23 +41,22 @@ template <typename ColorType> void ImageLoader<ColorType>::Write(Image<ColorType
     } else if(extension=="ppm"){
         id="P3";
     } else {throw "Invalid extension";}
-    file << id << " " << image.GetWidth() << " " << image.GetHeight() << " 255" << std::endl;
-    for(int i=0;i<image.GetHeight()*image.GetHeight();i++){
-        if(extension=="pgm") {
-            file << Clamp((int)((image.GetPixel(i).GetGrayscaleValue())*255),0,255) << " ";
-        } else {
-            file << Clamp((int)((image.GetPixel(i).GetChannel(RED))*255),0,255) << " " << Clamp((int)((image.GetPixel(i).GetChannel(GREEN))*255),0,255) << " " << Clamp((int)((image.GetPixel(i).GetChannel(BLUE))*255),0,255) << " ";
+    file << id << " " << image.GetWidth() << " " << image.GetHeight() << " "<< depth << std::endl;
+    for(int y=0;y<image.GetHeight();y++){
+        for(int x=0;x<image.GetWidth();x++){
+            if(extension=="pgm") {
+                file << Clamp((int)((image.GetPixel(x,y).GetGrayscaleValue())*depth),0,depth) << " ";
+            } else {
+                file << Clamp((int)((image.GetPixel(x,y).GetChannel(RED))*depth),0,depth) << " " << Clamp((int)((image.GetPixel(x,y).GetChannel(GREEN))*depth),0,depth) << " " << Clamp((int)((image.GetPixel(x,y).GetChannel(BLUE))*depth),0,depth) << " ";
+            }
         }
-        if(i>0 && i%image.GetWidth()==0){
-            file << std::endl;
-        }
-
+        file << std::endl;
     }
     file.close();
 }
 
 
-template <typename ColorType> Image<ColorType> ImageLoader<ColorType>::Load(std::string path=""){
+template <typename ColorType> Image<ColorType> Load<ColorType>(std::string path){
     std::fstream file;
     file.open(path);
     std::string id;
@@ -73,23 +65,26 @@ template <typename ColorType> Image<ColorType> ImageLoader<ColorType>::Load(std:
     file>>id;
     file>>width>>height>>depth;
     Image<ColorType> image(width,height);
-    for(int i=0;i<width*height;i++){
-        if(id=="P2"){
-            float grayscale;
-            file>>grayscale;
-            grayscale/=depth;
-            image.GetPixel(i).SetColor(grayscale);
+    for(int y=0;y<height;y++){
+        for(int x=0;x<width;x++){
+            if(id=="P2"){
+                float grayscale;
+                file>>grayscale;
+                grayscale/=depth;
+                image.GetPixel(x,y).SetColor(grayscale);
+            }
+            else if(id=="P3"){
+                float red,green,blue;
+                file>>red>>green>>blue;
+                red/=depth;
+                green/=depth;
+                blue/=depth;
+                image.GetPixel(x,y).SetColor(red,green,blue,1);
+            } else {
+                throw "Invalid file format";
+            }
         }
-        else if(id=="P3"){
-            float red,green,blue;
-            file>>red>>green>>blue;
-            red/=depth;
-            green/=depth;
-            blue/=depth;
-            image.GetPixel(i).SetColor(red,green,blue,1);
-        } else {
-            throw "Invalid file format";
-        }
+
     }
 
     file.close();

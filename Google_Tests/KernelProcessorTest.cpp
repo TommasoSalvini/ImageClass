@@ -16,6 +16,7 @@ TEST(kernel_test, test_calculation) {
         }
     }
     float kernel[9] = {0.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0};
-    KernelProcessor<ColorGrayscale> processor(&image);
-    EXPECT_FLOAT_EQ(4,processor.CalculateKernelColor(1,1,kernel).GetGrayscaleValue());
+    KernelProcessor<ColorGrayscale> processor(kernel);
+    Image<ColorGrayscale> result = processor.Process(image);
+    EXPECT_FLOAT_EQ(4,result.GetPixel(1,1).GetGrayscaleValue());
 }

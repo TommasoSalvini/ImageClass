@@ -9,7 +9,7 @@
 
 TEST(image_test, image_set) {
     Image<ColorRGBA> image(100,200);
-    image.SetPixel(1,2,3,4,50,50);
+    image.SetPixel(ColorRGBA(1,2,3,4),50,50);
     EXPECT_EQ(2,(image.GetPixel(50,50)).GetChannel(GREEN));
     EXPECT_EQ(100,image.GetWidth());
 }
