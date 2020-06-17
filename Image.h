@@ -6,6 +6,7 @@
 #define IMAGECLASS_IMAGE_H
 
 #include <vector>
+#include <exception>
 
 
 template <typename ColorType> class Image {
@@ -33,12 +34,22 @@ template<typename ColorType> Image<ColorType>::Image(int width,int height){
 }
 
 template<typename ColorType> ColorType& Image<ColorType>::GetPixel(int x,int y){
-    //std::cout << x%width << " " << y%height << std::endl;
-    return pixels[(width * ((y%height+height)%height)) + (x%width+width)%width ];
+    if(x<0 || x>=width || y<0 || y>=height){
+        throw std::out_of_range("Invalid pixel coordinate");
+    } else {
+        //std::cout<<(width*y)+x<<std::endl;
+        return pixels[(width*y)+x ];
+    }
 }
 
 template<typename ColorType> void Image<ColorType>::SetPixel(ColorType color,int x,int y){
-    GetPixel(x,y) = color;
+    try {
+        GetPixel(x,y) = color;
+    }
+    catch(std::out_of_range& exception){
+        throw exception;
+    }
+
 }
 
 template<typename ColorType> int Image<typename ColorType>::GetWidth() {

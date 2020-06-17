@@ -46,7 +46,13 @@ template<typename ColorType> ColorType KernelProcessor<ColorType>::CalculateKern
     int kernel_index=0;
     for(int j=-1;j<=1;j++){
         for(int i=-1;i<=1;i++){
-            current_color=(image.GetPixel(x+i,y+j));
+            try {
+                current_color=(image.GetPixel(x+i,y+j));
+            }
+            catch(std::out_of_range exception){
+                current_color=image.GetPixel(x,y);
+
+            }
             final=final+(current_color*kernel[kernel_index]);
             kernel_index++;
 

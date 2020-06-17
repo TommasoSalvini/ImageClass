@@ -30,23 +30,29 @@ int main() {
     KernelProcessor<ColorRGBA> processor;
     Image<ColorRGBA> final;
 
+    std::cout<<"Writing UV test"<<std::endl;
     Write<ColorRGBA>(uvtest,"results/uvtest.ppm");
-
+    std::cout<<"Writing original image"<<std::endl;
     Write<ColorRGBA>(image,"results/original.ppm");
     processor.SetKernel(processor.blur);
     final = processor.Process(image);
+    std::cout<<"Writing blurred image"<<std::endl;
     Write<ColorRGBA>(final,"results/blur.ppm");
     processor.SetKernel(processor.sharpen);
     final = processor.Process(image);
+    std::cout<<"Writing sharpened image"<<std::endl;
     Write<ColorRGBA>(final,"results/sharpen.ppm");
     processor.SetKernel(processor.emboss);
     final = processor.Process(image);
+    std::cout<<"Writing embossed image"<<std::endl;
     Write<ColorRGBA>(final,"results/emboss.ppm");
     processor.SetKernel(processor.outline);
     final = processor.Process(image);
+    std::cout<<"Writing outlined image"<<std::endl;
     Write<ColorRGBA>(final,"results/outline.ppm");
     processor.SetKernel(processor.edge);
     final = processor.Process(image);
+    std::cout<<"Writing edge detected image"<<std::endl;
     Write<ColorRGBA>(final,"results/edge.ppm");
 
     return 0;
